@@ -1,14 +1,20 @@
-// HomeWork0519.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
 
 #include <iostream>
 
-int getSize(const char* const string)
+/////////////////
+//5.18 homework//
+/////////////////
+
+
+// 스트링 사이즈 반환
+int getStrSize(const char* const string)
 {
     if (!string) {
         return -1;
     }
+
     int count = 0;
+
     while (string[count] != '\0')
     {
         ++count;
@@ -16,6 +22,7 @@ int getSize(const char* const string)
     return count;
 }
 
+//string 내의 ch 갯수 반환
 int ChCount(const char* const string, char Ch)
 {
     if (!string) {
@@ -38,45 +45,75 @@ int ChCount(const char* const string, char Ch)
     return count;
 }
 
+//string 내의 ' ' 삭제
 void TrimDelete(char* string)
 {
     if (string) {
-
-        char* tempString = string;
-
-        for (size_t i = 0; i < getSize(string); ++i) {
-            if (string[i] != ' ') {
-                tempString[i] = string[i];
+        int i = 0;
+        while (string[i] != '\0') 
+        {
+            if (string[i] == ' ') 
+            {
+                for (size_t j = 0; j < getStrSize(string) - i; j++)
+                {
+                    string[i + j] = string[i + j + 1];
+                }
+            }
+            else {
+                ++i;
             }
         }
     }
+    else {
+        printf_s("string is empty");
+    }
 }
 
-
+/*number의 자릿수 반환*/ 
 int DigitsCount(int number)
 {
     if (number < 0) {
         return -1;
     }
         
-    int tempNumber = number;
-    int count = 0;
-    while (tempNumber >= 10) {
+    int count = 1;
+    while (number >= 10) {
+        number /= 10;
+        ++count;
+    }
+    
+    return count;
+}
+
+// left의 상수 문자열을 right 복사
+void StrCopy(const char* const left, char* right)
+{
+    if (left)
+    {
+        for (size_t i = 0; i < getStrSize(left); ++i)
+        {
+            right[i] = left[i];
+        }
+    }
+    else {
+        printf_s("left string is empty");
 
     }
-    number
-    return 0;
+    
 }
 
-void StrCopy(const char* const _Left, char* _Right)
+/* 가장 어려운 숙제
+int number를 right 문자열로 치환*/
+void NumberToString(int number, char* right)
 {
-    return;
-}
-
-// 가장 어려운 숙제
-void NumberToString(int _Number, char* _Right)
-{
-    return;
+    // Result = "312312";
+    //if( number < 0)
+    int digits = DigitsCount(number);
+    for (size_t i = 0; i < digits; ++i)
+    {
+        right[digits - i - 1 ] = (number % 10) +'0';
+        number /= 10;
+    }
 }
 
 
@@ -99,7 +136,7 @@ int main()
 
     {
         // 8이 리턴되게 만들어라.
-        int Result = DigitsCount(100);
+        int Result = DigitsCount(108880);
 
         int a = 0;
     }
@@ -119,6 +156,9 @@ int main()
 
         NumberToString(312312, Result);
 
+        //
+        printf_s("intToStr : %s", Result);
+
         char Ch = '0';
 
         int Value = 7;
@@ -128,16 +168,6 @@ int main()
         int a = 0;
     }
 
-    std::cout << "Hello World!\n";
+  
 }
 
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
-
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.
