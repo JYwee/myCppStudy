@@ -29,18 +29,14 @@ int ChCount(const char* const string, char Ch)
         return -1;
     }
 
-    int i = 0;
-    int count = 0;
-    while (string[i] != '\0')
-    {
-        char Ch = string[i];
+    int i = 0, count = 0;
 
+    for(size_t i =0; i<getStrSize(string); ++i)
+    {
         if (string[i] == Ch) {
             ++count;
         }
-        ++i;
     }
-
     // Ch와 같은 문자가 몇개들어있는지 세어서 리턴해주는 함수
     return count;
 }
@@ -122,7 +118,9 @@ int main()
     // 4가 리턴되어야 합니다.
     // 문자열의 마지막에 들어가는 0은 글자로 치지 않습니다.
     {
-        int Result = ChCount("ab aaa ccc ddd eee", 'w');
+        int Result = ChCount("ab aaa ccc ddd eee", 'a');
+
+        int a = 0;
     }
 
     {
