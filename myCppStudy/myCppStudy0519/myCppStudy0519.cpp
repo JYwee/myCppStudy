@@ -116,7 +116,7 @@ void StrCopy(const char* const left, char* right)
 {
     if (left)
     {
-        for (size_t i = 0; i < GetStrSize(left); ++i)
+        for (size_t i = 0; i < GetStrSize(left) + 1; ++i)
         {
             right[i] = left[i];
         }
@@ -201,6 +201,7 @@ int main()
         char ArrCopyText[256] = {};
 
         StrCopy("aaaa bbb ccc", ArrCopyText);
+        //StrCopy("ccc", ArrCopyText);
         //StrCopy(nullptr, ArrCopyText);
         int a = 0;
     }
