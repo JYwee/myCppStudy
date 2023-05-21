@@ -1,12 +1,9 @@
 
 #include <iostream>
 
-#include <string.h>
-
 /////////////////
 //5.18 homework//
 /////////////////
-
 
 //언더,오버플로우 체크
 bool IsIntRangeRight(const int value) 
