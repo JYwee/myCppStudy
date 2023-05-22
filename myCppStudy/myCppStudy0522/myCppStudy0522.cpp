@@ -1,9 +1,6 @@
 #include <iostream>
 #include <conio.h> // 키를 누를때까지 기다리는 함수
 #include <stdlib.h>
-
-
-
 // 스트링 사이즈 반환
 //int GetStrSize(const char* const string)
 //{
@@ -16,7 +13,6 @@
 //    }
 //    return count;
 //}
-
 void StatusRender(const char* const name, int att, int hp)
 {
     if (!name) {
@@ -61,7 +57,6 @@ bool IsLive(int hp)
 int main()
 {
     //std::locale::global(std::locale("ko_KR.UTF-8")); //.cpp
-    
     int PlayerHp = 200;
     int PlayerAtt = 20;
     char PlayerName[40] = "fasdhjkfasdhjkfasdhjfklasdhjkfasdh";
