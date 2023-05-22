@@ -2,8 +2,7 @@
 #include <conio.h> // 키를 누를때까지 기다리는 함수
 #include <stdlib.h>
 
-// 상태와 개념을 하나로 묶어서 내가 인간적인 생각을 문법으로 표현한다.
-// 이걸 객체지향의 특성이 추상화라고 합니다.
+
 
 // 스트링 사이즈 반환
 //int GetStrSize(const char* const string)
@@ -17,10 +16,7 @@
 //    }
 //    return count;
 //}
-// 숙제 1 -- 문자의 오른쪽끝을 맞춰오세요. 이름은 알파뱃만
-// fasdhjkfasdhjfkasd--------
-// Monster-------------------
-// 위와같이 UI의 끝부분이 맞게 만들어라.
+
 void StatusRender(const char* const name, int att, int hp)
 {
     if (!name) {
@@ -42,6 +38,9 @@ void StatusRender(const char* const name, int att, int hp)
 
 void DamagePrint(const char* const attName, const char* const defName, int att)
 {
+    if (!attName || !defName) {
+        return;
+    }
     printf_s("%s가 %s를 공격했습니다.\n", attName, defName);
     printf_s("%s는 %d의 데미지를 입었습니다.\n", defName, att);
 }
@@ -58,7 +57,6 @@ bool IsLive(int hp)
     }
     return true;
 }
-// 내일꼭 break continue
 
 int main()
 {
@@ -73,16 +71,11 @@ int main()
     int MonsterAtt =50;
     char MonsterName[40] = "Monster";
 
-    // 숙제 2 -- 실시간으로 만들어오세요.
-    // 데미지 메세지가 나오는순간 체력이 곧바로 감소되게 만들어라.
-    // 화면 지우는 함수 화면에 출력하는 함수를 잘 생각해보세요.
-    // 그냥 무식하게 생각해라.
     if (PlayerHp <= 0 || MonsterHp <= 0)
     {
         printf_s("hp는 0보다 작거나 같을수 없습니다.");
         return 0;
     }
-
     if (PlayerAtt <= 0 && MonsterAtt <= 0)
     {
         printf_s("둘다 공격력이 0보다 작거나 같을수 없습니다.");
@@ -94,13 +87,9 @@ int main()
 
     while (true)
     {
-       
-        _getch();
-
-        // 아무키나 입력할때까지 기다리는 함수
+        _getch();            // 아무키나 입력할때까지 기다리는 함수
         Damage(MonsterHp, PlayerAtt);
         
-
         system("cls");
         StatusRender(PlayerName, PlayerAtt, PlayerHp);
         StatusRender(MonsterName, MonsterAtt, MonsterHp);
@@ -111,10 +100,8 @@ int main()
         }
 
         _getch();
-        
         Damage(PlayerHp, MonsterAtt);
         
-
         system("cls");
         StatusRender(PlayerName, PlayerAtt, PlayerHp);
         StatusRender(MonsterName, MonsterAtt, MonsterHp);
@@ -123,10 +110,5 @@ int main()
             printf_s("%s win\n", MonsterName);
             return 0;
         }
-        // 숙제 3 -- 누군가 죽었다. 누군가의 Hp가 0이 된순간 종료.
-        // 몬스터와 플레이어가 서로 한대씩 때리면서
-        // 한명이 죽으면 끝납니다.
-        // 지금 그걸 그래픽으로 표현할 방법이 없으니까.
-        // 글자로 표현하겠습니다.
     }
 }
