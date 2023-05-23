@@ -109,9 +109,10 @@ int main()
 
     Player NewPlayer = Player();
     TestFunction(NewPlayer, 20);
-
-    //아래는 실험.
     
+    //
+    //아래는 실험.
+    //
     size_t SizeTest = sizeof(&TestFunction);        //8
     __int64 AddressTest = (__int64)&TestFunction;   //  140699984728384
     auto AddressTest2 = &TestFunction;              //0x00007ff7cca31140
