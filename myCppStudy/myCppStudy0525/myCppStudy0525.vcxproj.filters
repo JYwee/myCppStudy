@@ -24,5 +24,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="FightZone.h" />
+    <ClInclude Include="UtilityMy.h" />
   </ItemGroup>
 </Project>

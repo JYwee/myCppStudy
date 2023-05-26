@@ -1,7 +1,7 @@
 #pragma once
 
-Player NewPlayer;
-Monster NewMonster;
+class Player;
+class Monster;
 
 class FightZone
 {

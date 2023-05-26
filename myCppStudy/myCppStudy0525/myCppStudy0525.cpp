@@ -13,21 +13,6 @@
 #include "Monster.h"
 #include "FightZone.h"
 
-
-const int LineCount = 40;
-
-int StringCount(const char* _Arr)
-{
-	// 위쪽 예제코드를 참고하세요
-	int ChCount = 0;
-	while (_Arr[ChCount])
-	{
-		++ChCount;
-	}
-
-	return ChCount;
-}
-
 // 문법은 왜 발전했다? 인간이 코드를 덜치기 위해서 발전했습니다.
 int main()
 {

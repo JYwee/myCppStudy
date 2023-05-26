@@ -1,6 +1,6 @@
 #include "Player.h"
 #include <stdio.h>
-#include "myCppStudy0525.cpp"
+#include "UtilityMy.h"
 
 
 Player::Player()
