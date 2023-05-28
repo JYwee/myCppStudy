@@ -1,5 +1,5 @@
 #pragma once
-class int4;
+struct int4;
 
 class ConsoleScreen
 {
@@ -20,7 +20,8 @@ private:
 
     static const int XLine = 20;
     static const int YLine = 10;
-
+    
+    
 
     char BaseCh = ' ';
     char ArrScreen[YLine][XLine + 1] = {};

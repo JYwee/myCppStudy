@@ -8,5 +8,6 @@ public:
 	~Wall();
 
 	void Init();
+	
 };
 

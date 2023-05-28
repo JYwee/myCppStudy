@@ -4,6 +4,8 @@
 #include "int4.h"
 #include <conio.h>
 
+#define ESC 27
+
 Player::Player()
 {
 }
@@ -21,32 +23,45 @@ void Player::Input(ConsoleScreen* _Sreen)
     switch (Select)
     {
     case 'a':
-
-        MovePos = Left;
-
+        
+            MovePos = Left;
+        
         break;
     case 'd':
-        MovePos = Right;
-
+        
+            MovePos = Right;
+        
         break;
     case 'w':
-        MovePos = Up;
+        
+            MovePos = Up;
+      
+        
         break;
+
     case 's':
-        MovePos = Down;
+        
+            MovePos = Down;
+        
         break;
+
+    case ESC:
+        break;
+
     default:
-        break;
+        break;   
     }
     if (false == _Sreen->IsScreenOut(GetPos() + MovePos))
     {
-        if (IsCanPassWay(GetPos() + MovePos)) {
+        if (IsCanPassWay(GetPos() + MovePos, GetPos() + MovePos)) {
             AddPos(MovePos);
         }
+
+        //addPos();
     }
 }
 
-bool Player::IsCanPassWay(int4 wallPosition)
+bool Player::IsCanPassWay(const int4& playerPosition ,const int4& wallPosition) const
 {
     bool result = (GetPos() == wallPosition);
     if (result) {

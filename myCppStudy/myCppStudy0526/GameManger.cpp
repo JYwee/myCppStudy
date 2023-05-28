@@ -1,6 +1,7 @@
 #include "GameManger.h"
 
 GameManger::GameManger()
+	: gameState(true)
 {
 }
 
@@ -8,9 +9,11 @@ GameManger::~GameManger()
 {
 }
 
-void GameManger::Init()
+bool GameManger::IsRunGame()
 {
+	return gameState;
 }
+
 
 //bool GameManger::Isblock()
 //{

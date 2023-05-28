@@ -2,7 +2,7 @@
 #include "int4.h"
 
 class ConsoleScreen;
-//class int4;
+
 
 class Object
 {
@@ -27,5 +27,6 @@ public:
         Pos = _Pos;
     }
 
+    void Destory();
 };
 

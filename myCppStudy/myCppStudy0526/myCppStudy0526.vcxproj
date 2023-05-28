@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="ConsoleScreen.cpp" />
     <ClCompile Include="GameManger.cpp" />
-    <ClCompile Include="int4.cpp" />
     <ClCompile Include="myCppStudy0526.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />

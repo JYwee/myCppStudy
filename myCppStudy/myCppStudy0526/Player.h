@@ -2,7 +2,7 @@
 #include "Object.h"
 
 class ConsoleScreen;
-class int4;
+struct int4;
 //class Object;
 
 class Player : public Object
@@ -12,6 +12,6 @@ public:
 	~Player();
 
 	void Input(ConsoleScreen* _Sreen);
-	bool IsCanPassWay(int4 wallPostion);
+	bool IsCanPassWay(const int4& playerPosition, const int4& wallPostion) const;
 };
 

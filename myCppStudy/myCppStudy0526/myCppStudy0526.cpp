@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <conio.h>
-
+#include "int4.h"
 #include "ConsoleScreen.h"
 #include "Object.h"
 #include "Player.h"
@@ -20,21 +20,27 @@
 // 
 // 3. 장애물을 통과 못하게 하기.
 
-// 숙제 플레이어가 화면 바깥으로 나가지 못하게 해라.
+// 4. 플레이어가 어떠한 키를 누르면 플레이어 위치에서
+//    총알 1발이 발사되게 만드세요.
 
+// 5. 그 총알 1발에 벽이 닿으면 벽이 없어지게 만드세요.
+
+// 숙제 플레이어가 화면 바깥으로 나가지 못하게 해라.
 
 
 
 int main()
 {
-    ConsoleScreen Screen;
+    static ConsoleScreen Screen;
+    static Player MainPlayer;
+    static Wall MainWall[10];
+
+
     Screen.Init('*');
 
     Object obj;
-    Player MainPlayer;
-    Wall MainWall[4];
-
-    for (int i = 0; i < 4; ++i)
+    
+    for (int i = 0; i < 10; ++i)
     {
 
         MainWall[i].SetPos({ 1, i });
@@ -48,17 +54,28 @@ int main()
     while (true)
     {
         Screen.Clear();
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < 10; ++i)
         {
             Screen.SetPixel(MainWall[i].GetPos(), '0');
         }
         Screen.SetPixel(MainPlayer.GetPos(), 'a');
-        Screen.SetPixel(MainPlayer.GetPos(), 'a');
+        //Screen.SetPixel(MainPlayer.GetPos(), 'a');
         Screen.Print();
 
 
-        MainPlayer.Input(&Screen);
+
+        //MainPlayer.Input(&Screen);
+
+        if (0 != _kbhit())
+        {
+            MainPlayer.Input(&Screen);
+
+            
+
+            // 1000이면 1초입니다.
+        }
+        // 1초 동안 정지합니다.
+        Sleep(200);
     }
-
-
 }
+

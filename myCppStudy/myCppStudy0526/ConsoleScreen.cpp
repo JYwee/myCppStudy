@@ -2,6 +2,7 @@
 #include <iostream>
 #include "int4.h"
 
+
 ConsoleScreen::ConsoleScreen() {
 
 }
