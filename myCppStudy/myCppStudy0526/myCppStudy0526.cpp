@@ -7,10 +7,19 @@
 #include "ConsoleScreen.h"
 #include "Object.h"
 #include "Player.h"
+#include "Bullet.h"
 #include "Wall.h"
 #include <Windows.h>
 
-//class Player;
+#include "GameManger.h"
+
+
+
+
+//class GameManager;
+class Player;
+
+GameManger* GameManger::gm_Inst = nullptr;
 
 // 1. 파일 정리
 // 2. 10개의 장애물 배치 class Wall
@@ -31,36 +40,58 @@
 
 int main()
 {
-    static ConsoleScreen Screen;
-    static Player MainPlayer;
-    static Wall MainWall[10];
+    if (!GameManger::GetInstance()->Init())
+    {
+        return false;
+    }
 
+    
+    ConsoleScreen* Screen = GameManger::GetInstance()->getScreen();
+    Player* MainPlayer = GameManger::GetInstance()->getPlayer();
+    Bullet* Bullet = GameManger::GetInstance()->getBullet();
+    
+    Wall* MainWall[10];
+    
+    
+    
 
-    Screen.Init('*');
+    Screen->Init('*');
 
-    Object obj;
+    
     
     for (int i = 0; i < 10; ++i)
     {
-
-        MainWall[i].SetPos({ 1, i });
+        MainWall[i] = GameManger::GetInstance()->getWall(i);
+        //GameManger::GetInstance()->getWall(i)->SetPos({ 1, i });
+        MainWall[i]->SetPos({ 1, i });
     }
 
     // 클래스의경우에는 
-    MainPlayer.SetPos({ 10, 5 });
+    MainPlayer->SetPos({ 10, 5 });
 
-    MainPlayer.AddPos({ 1 ,1 });
+    MainPlayer->AddPos({ 1 ,1 });
 
     while (true)
     {
-        Screen.Clear();
+        if (!GameManger::GetInstance()->getGameState()) {
+            return 0;
+        }
+
+        Screen->Clear();
         for (int i = 0; i < 10; ++i)
         {
-            Screen.SetPixel(MainWall[i].GetPos(), '0');
+            Screen->SetPixel(MainWall[i]->GetPos(), '0');
         }
-        Screen.SetPixel(MainPlayer.GetPos(), 'a');
-        //Screen.SetPixel(MainPlayer.GetPos(), 'a');
-        Screen.Print();
+        Screen->SetPixel(MainPlayer->GetPos(), 'a');
+
+        
+        
+        if (Bullet->IsOnFire()) {
+            Screen->SetPixel(Bullet->GetPos(), 'B');
+            Bullet->OnFire();
+        }
+        
+        Screen->Print();
 
 
 
@@ -68,8 +99,8 @@ int main()
 
         if (0 != _kbhit())
         {
-            MainPlayer.Input(&Screen);
-
+            //mGameManager.getScreen()->Input(&Screen);
+            MainPlayer->Input(Screen);
             
 
             // 1000이면 1초입니다.

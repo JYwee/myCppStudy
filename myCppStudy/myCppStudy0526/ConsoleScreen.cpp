@@ -72,4 +72,6 @@ void ConsoleScreen::Print() const {
             printf_s("\n");
         }
     
+        printf_s("\n\n\n\n\n\n\n\n");
+        printf_s("esc : 종료  w,a,s,d : 이동  space : 총알 발사");
 }

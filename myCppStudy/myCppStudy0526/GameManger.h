@@ -1,13 +1,23 @@
 #pragma once
-class Object;
+//class Object;
+class ConsoleScreen;
+class Player;
+class Wall;
+class Bullet;
+
+#define WallSize 10
 
 class GameManger
 {
+	
+
 private:
 	GameManger();
 	~GameManger();
+	static GameManger* gm_Inst;
 
 public:
+	/////////////////////signleton/////////////////////
 	static GameManger* GetInstance() {
 		if (!gm_Inst) {
 			gm_Inst = new GameManger();
@@ -26,14 +36,30 @@ public:
 	void SetGameState(bool gameState){
 		this->gameState = gameState;
 	}
+	bool getGameState() {
+		return gameState;
+	}
+	///////////////////////signleton///////////////////
+
+	bool Init();
+
+	ConsoleScreen* getScreen();
+	Player* getPlayer();
+	Wall* getWall(int count);
+	Bullet* getBullet();
+
 
 private:
-	static GameManger* gm_Inst;
+	
+	bool gameState = true;
 
-	bool gameState;
-
+	ConsoleScreen* mScreen;
+	Player* mPlayer;
+	Wall* mWall[WallSize];
+	Bullet* mBullet;
+	
 };
 
-GameManger* GameManger::gm_Inst = nullptr;
+
 
 

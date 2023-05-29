@@ -1,10 +1,14 @@
 #include "Player.h"
 //#include "Object.h"
 #include "ConsoleScreen.h"
+#include "GameManger.h"
+#include "Wall.h"
+#include "Bullet.h"
 #include "int4.h"
 #include <conio.h>
 
 #define ESC 27
+
 
 Player::Player()
 {
@@ -22,50 +26,72 @@ void Player::Input(ConsoleScreen* _Sreen)
 
     switch (Select)
     {
-    case 'a':
-        
-            MovePos = Left;
-        
+    case 'a': {
+        MovePos = Left;
         break;
+    }
     case 'd':
-        
-            MovePos = Right;
-        
+    {
+        MovePos = Right;
         break;
+    }
     case 'w':
-        
-            MovePos = Up;
-      
-        
+    {
+        MovePos = Up;
         break;
-
+    }
     case 's':
-        
-            MovePos = Down;
-        
+    {
+        MovePos = Down;
         break;
-
-    case ESC:
+    }
+    case ESC: 
+    {
+        GameManger::GetInstance()->SetGameState(false);
         break;
+    }
+    case ' ': 
+    {
+        if (GameManger::GetInstance()->getBullet()->IsOnFire()) {
 
+        }
+        else {
+            FireBullet();
+            GameManger::GetInstance()->getBullet()->SetBulletState(true);
+        }
+        break;
+    }
+        
     default:
         break;   
     }
     if (false == _Sreen->IsScreenOut(GetPos() + MovePos))
     {
-        if (IsCanPassWay(GetPos() + MovePos, GetPos() + MovePos)) {
+        if (IsCanPassWay(GetPos() + MovePos)) {
             AddPos(MovePos);
         }
 
-        //addPos();
     }
 }
 
-bool Player::IsCanPassWay(const int4& playerPosition ,const int4& wallPosition) const
+bool Player::IsCanPassWay(const int4& playerPosition) const
 {
-    bool result = (GetPos() == wallPosition);
-    if (result) {
-        return false;
+    
+    //bool result = (GetPos() == wallPosition);
+    
+
+    for (int i = 0; i < WallSize; ++i) {
+        
+        if (playerPosition == GameManger::GetInstance()->getWall(i)->GetPos())
+        {
+            return false;
+        }
     }
+    
     return true;
+}
+
+void Player::FireBullet()
+{
+    GameManger::GetInstance()->getBullet()->SetPos(this->GetPos()+Left);
 }

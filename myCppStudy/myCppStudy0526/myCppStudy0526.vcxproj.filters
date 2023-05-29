@@ -13,18 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\object">
+      <UniqueIdentifier>{db7792fa-2f10-4934-9f6b-30d929c391ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\object">
+      <UniqueIdentifier>{6d40a35d-f652-40a6-a2d7-d39c0370621a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="myCppStudy0526.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ConsoleScreen.cpp">
@@ -33,17 +30,20 @@
     <ClCompile Include="GameManger.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>소스 파일\object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Object.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="ConsoleScreen.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -52,6 +52,18 @@
     </ClInclude>
     <ClInclude Include="GameManger.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>헤더 파일\object</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일\object</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>헤더 파일\object</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>헤더 파일\object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

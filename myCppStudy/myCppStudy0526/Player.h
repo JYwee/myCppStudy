@@ -12,6 +12,8 @@ public:
 	~Player();
 
 	void Input(ConsoleScreen* _Sreen);
-	bool IsCanPassWay(const int4& playerPosition, const int4& wallPostion) const;
+	bool IsCanPassWay(const int4& playerPosition) const;
+	void FireBullet();
+
 };
 

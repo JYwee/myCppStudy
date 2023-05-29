@@ -73,8 +73,8 @@ public:
 
     bool operator==(const int4& _Other) const
     {
-        if (X == _Other.X && Y == _Other.Y &&
-            Z == _Other.Z && W == _Other.W) {
+        if (X == _Other.X && Y == _Other.Y
+            /*&& Z == _Other.Z && W == _Other.W*/) {
             return true;
         }
         else
