@@ -74,5 +74,5 @@ void ConsoleScreen::Print() const {
     
         printf_s("\n\n\n\n\n\n\n\n");
         printf_s("esc : 종료  w,a,s,d : 이동  space : 총알 발사 \n");
-        printf_s("버전 1  왼쪽으로만 총알 발사 가능. 모든 벽 파괴시 종료\n");
+        printf_s("버전 1  왼쪽으로만 총알 한발만 발사 가능. 모든 벽 파괴시 종료\n");
 }
