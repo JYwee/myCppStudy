@@ -59,11 +59,11 @@ int main()
 
     
     
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < WallSize; ++i)
     {
         MainWall[i] = GameManger::GetInstance()->getWall(i);
         //GameManger::GetInstance()->getWall(i)->SetPos({ 1, i });
-        MainWall[i]->SetPos({ 1, i });
+        MainWall[i]->SetPos({ 2, i });
     }
 
     // 클래스의경우에는 
@@ -102,8 +102,9 @@ int main()
         
         
         if (Bullet->IsOnFire()) {
-            Screen->SetPixel(Bullet->GetPos(), 'B');
             Bullet->OnFire();
+            
+            
         }
         
         Screen->Print();

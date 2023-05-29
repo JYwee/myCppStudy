@@ -95,5 +95,5 @@ bool Player::IsCanPassWay(const int4& playerPosition) const
 
 void Player::FireBullet()
 {
-    GameManger::GetInstance()->getBullet()->SetPos(this->GetPos()+Left);
+    GameManger::GetInstance()->getBullet()->SetPos(this->GetPos());
 }
