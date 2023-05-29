@@ -82,7 +82,9 @@ bool Player::IsCanPassWay(const int4& playerPosition) const
 
     for (int i = 0; i < WallSize; ++i) {
         
-        if (playerPosition == GameManger::GetInstance()->getWall(i)->GetPos())
+        if (playerPosition == GameManger::GetInstance()->getWall(i)->GetPos()
+            &&
+            GameManger::GetInstance()->getWall(i)->IsEnableObj())
         {
             return false;
         }

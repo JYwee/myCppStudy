@@ -26,7 +26,16 @@ public:
     {
         Pos = _Pos;
     }
+    bool IsEnableObj() {
+        return isEnable;
+    }
+    void SetEnableObj(bool state) {
+        isEnable = state;
+    }
 
     void Destory();
+
+private:
+    bool isEnable;
 };
 

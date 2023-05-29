@@ -71,6 +71,8 @@ int main()
 
     MainPlayer->AddPos({ 1 ,1 });
 
+    bool isWallEmpty = true;
+
     while (true)
     {
         if (!GameManger::GetInstance()->getGameState()) {
@@ -78,11 +80,24 @@ int main()
         }
 
         Screen->Clear();
+
+        isWallEmpty = true;
+
         for (int i = 0; i < 10; ++i)
         {
-            Screen->SetPixel(MainWall[i]->GetPos(), '0');
+            
+            if (MainWall[i]->IsEnableObj()) {
+                Screen->SetPixel(MainWall[i]->GetPos(), '0');
+                isWallEmpty = false;
+            }
+            else {
+                Screen->SetPixel(MainWall[i]->GetPos(), '*');
+                
+            }
         }
-        Screen->SetPixel(MainPlayer->GetPos(), 'a');
+
+        
+        Screen->SetPixel(MainPlayer->GetPos(), 'P');
 
         
         
@@ -93,6 +108,11 @@ int main()
         
         Screen->Print();
 
+        if (isWallEmpty)
+        {
+            printf_s("모든 벽을 파괴하였습니다.");
+            return 0;
+        }
 
 
         //MainPlayer.Input(&Screen);

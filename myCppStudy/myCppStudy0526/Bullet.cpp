@@ -6,6 +6,7 @@
 Bullet::Bullet()
 	:mbulletState(false)
 {
+	SetEnableObj(false);
 }
 
 Bullet::~Bullet()
@@ -32,6 +33,7 @@ void Bullet::OnFire()
 				SetBulletState(false);
 
 				GameManger::GetInstance()->getWall(i)->Destory();
+				//GameManger::GetInstance()->getWall(i)->SetEnableObj(false);
 			}
 		}
 	}
