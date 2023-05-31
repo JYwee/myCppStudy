@@ -49,6 +49,7 @@ public:
 	{
 		if (hVector.sizeValue <= 0)
 		{
+			reserve(hVector.capacityValue);
 			return *ArrPtr;
 		}
 		sizeValue = hVector.sizeValue;
@@ -226,23 +227,47 @@ int main()
 		}
 
 
-		for (size_t i = 0; i < Arr0.size(); i++)
-		{
-			std::cout << &Arr0[i] << std::endl;
-		}
-
 
 		////////// 호기심 실험용 /////////
-		Arr.~HVector();
+		//Arr.~HVector();
 
-		std::cout << Arr.capacity() << std::endl << std::endl;
+		//std::cout << Arr.capacity() << std::endl << std::endl;
 
-		for (size_t i = 0; i < Arr0.size(); i++)
-		{
-			std::cout << &Arr0[i] << std::endl;
-			std::cout << &Arr[i] << std::endl;
-			//std::cout << &Arr[i] << std::endl;
-		}
+		//
+		//HVector<int> Arr3;
+		//Arr.~HVector();
+		//Arr0 = Arr3; // 
+
+		//std::vector<int> v1;
+		//std::vector<int> v2;
+		//std::vector<int> v3;
+
+
+		//for (size_t i = 0; i < 10; i++)
+		//{
+		//	v1.push_back(i);
+		//}
+		//v2 = v1;
+
+		//for (size_t i = 0; i < v1.size(); i++)
+		//{
+		//	std::cout << &v1[i] << std::endl;
+		//	std::cout << &v2[i] << std::endl;
+		//	//std::cout << &Arr[i] << std::endl;
+		//}
+		//v1.~vector();
+		//for (size_t i = 0; i < v2.size(); i++)
+		//{
+		//	std::cout << &v1[i] << std::endl;
+		//	std::cout << &v2[i] << std::endl;
+		//	//std::cout << &Arr[i] << std::endl;
+		//}
+
+
+		//std::cout << Arr.capacity() << std::endl << std::endl;
+
+
+		//////////// 호기심 실험용 /////////
 		////////// 호기심 실험용 /////////
 	}
 
