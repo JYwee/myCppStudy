@@ -5,8 +5,10 @@ class Item :
 {
 public:
 
-    Item() {};
-    ~Item() {};
+    Item();
+    ~Item() {}
+
+    
 
 private:
 

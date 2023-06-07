@@ -12,6 +12,8 @@ int main()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
+    srand((unsigned int)time(NULL));
+
     if (!GameManager::GetInstance()->Init())
     {
        
@@ -20,15 +22,7 @@ int main()
 
     while (GameManager::GetInstance()->GetGameState())
     {
-        GameManager::GetInstance()->getConsoleScreen().GetInstance()->ClearScreen();
-
-
-        GameManager::GetInstance()->getConsoleScreen().GetInstance()->PrintScreen();
-
-       
-    
-    
-
+        GameManager::GetInstance()->Run();
         if (0 != _kbhit())
         {
             
@@ -38,7 +32,7 @@ int main()
             // 1000이면 1초입니다.
         }
         // 1초 동안 정지합니다.
-        Sleep(200);
+        Sleep(100);
     
     
     }

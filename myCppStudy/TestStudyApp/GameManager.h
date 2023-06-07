@@ -17,6 +17,7 @@ public:
 
 	bool Run();
 
+	bool IsPossibleMove();
 
 	const ConsoleScreen& getConsoleScreen() {
 		return *mConsoleScreen;
@@ -32,11 +33,13 @@ public:
 
 	bool Input();
 
+	void SpawnItem();
+
 private:
 	
 	ConsoleScreen* mConsoleScreen;
 	Snake* mSnake;
-
+	Item* mItem;
 	//std::list<
 	
 

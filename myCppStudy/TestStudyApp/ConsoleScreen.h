@@ -18,7 +18,7 @@ public:
 	void PrintScreen() const;
 	void ClearScreen();
 	bool IsInsideScreen(const Pos2D& pos) const;
-	void SetPixel(Pos2D &postion, const char chPixel);
+	void SetPixel(const Pos2D &postion, const char chPixel);
 
 private:
 	char mBaseChar = ' ';

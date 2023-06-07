@@ -9,14 +9,18 @@ public:
     Snake();
     ~Snake();
 
+    std::list<Pos2D> mSnakeBody;
+
+    bool IsAddBody = false;
+
     void Init();
 
     void AddSnakeBody(Pos2D& pos);
     
     bool IsTouchBody(Pos2D& nextPos);
 
-
-    std::list<Pos2D> mSnakeBody;
+    void MoveSnakeBody(const Pos2D& nextPos);
+    
 
     void SetDirection(const Pos2D& pos)
     {
@@ -30,7 +34,7 @@ public:
 
 
 private:
-
+    
     Pos2D mDirection = LEFT;
     
 };

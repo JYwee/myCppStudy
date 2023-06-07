@@ -1,7 +1,7 @@
 #include "GameManager.h"
 #include "ConsoleScreen.h"
 #include "Snake.h"
-
+#include "Item.h"
 
 GameManager::GameManager()
 {
@@ -23,6 +23,8 @@ bool GameManager::Init()
 	mSnake = new Snake;
 	mSnake->Init();
 
+	mItem = new Item;
+
 	std::list<Pos2D>::iterator startIter = mSnake->mSnakeBody.begin();
 	std::list<Pos2D>::iterator endIter = mSnake->mSnakeBody.end();
 
@@ -43,26 +45,33 @@ bool GameManager::Input()
 	switch (key)
 	{
 	case 'a': {
-		movePos = LEFT;
-		mSnake->SetDirection(LEFT);
+		if (mSnake->GetDirection() != RIGHT) {
+			movePos = LEFT;
+			mSnake->SetDirection(LEFT);
+		}
 		break;
 	}
 	case 'd': {
-		movePos = RIGHT;
-		mSnake->SetDirection(RIGHT);
+		if (mSnake->GetDirection() != LEFT) {
+			movePos = RIGHT;
+			mSnake->SetDirection(RIGHT);
+		}
 		break;
 	}
 	case 'w': {
-		movePos = UP;
-		mSnake->SetDirection(UP);
+		if (mSnake->GetDirection() != DOWN) {
+			movePos = UP;
+			mSnake->SetDirection(UP);
+			
+		}
 		break;
-
 	}
 	case 's': {
-		movePos = DOWN;
-		mSnake->SetDirection(DOWN);
+		if (mSnake->GetDirection() != UP) {
+			movePos = DOWN;
+			mSnake->SetDirection(DOWN);
+		}
 		break;
-
 	}
 	case 27: {
 		GameManager::GetInstance()->SetGameState(false);
@@ -77,8 +86,76 @@ bool GameManager::Input()
 	return true;
 }
 
+void GameManager::SpawnItem()
+{
+	mItem->SetEnableObj(true);
+	Pos2D spawnPos;
+	spawnPos.pos_X = rand() % (ConsoleScreen::Xline - 2)+1;
+	spawnPos.pos_Y = rand() % (ConsoleScreen::Yline - 2)+1;
+	mItem->SetPosition(spawnPos);
+	ConsoleScreen::GetInstance()->SetPixel(spawnPos,'A');
+}
+
+
+
 bool GameManager::Run()
 {
+	mConsoleScreen->GetInstance()->ClearScreen();
+
+	if (IsPossibleMove()) {
+		mSnake->MoveSnakeBody(mSnake->GetDirection());
+	}
+	else
+	{
+
+	}
+
+	if (!mItem->IsEnableObj())
+	{
+		SpawnItem();
+	}
+	else {
+		ConsoleScreen::GetInstance()->SetPixel(mItem->GetPosition(), 'A');
+	}
+	
+	
+
+	std::list<Pos2D>::iterator startIter = mSnake->mSnakeBody.begin();
+	std::list<Pos2D>::iterator endIter = mSnake->mSnakeBody.end();
+
+	for (; startIter != endIter; ++startIter)
+	{
+		ConsoleScreen::GetInstance()->SetPixel(*startIter, '*');
+	}
+
+	mConsoleScreen->GetInstance()->PrintScreen();
 
 	return false;
+}
+
+bool GameManager::IsPossibleMove()
+{
+	Pos2D nextPos = mSnake->mSnakeBody.front() + mSnake->GetDirection();
+	std::list<Pos2D>::iterator findIter = std::find(mSnake->mSnakeBody.begin(), mSnake->mSnakeBody.end(), nextPos);
+
+	if(nextPos == mItem->GetPosition())
+	{
+		mItem->Destory();
+		mItem->SetEnableObj(false);
+		SpawnItem();
+		mSnake->IsAddBody = true;
+
+		return true;
+	}
+	else if (nextPos.pos_X == 0 || nextPos.pos_Y == 0 || nextPos.pos_X == ConsoleScreen::Xline-1 || nextPos.pos_Y == ConsoleScreen::Yline-1 || findIter != mSnake->mSnakeBody.end())
+	{
+		mGameState = false;
+		return false;
+	}
+	
+	
+	
+	
+		return true;
+	
 }

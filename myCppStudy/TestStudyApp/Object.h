@@ -37,7 +37,7 @@ public:
 	}
 	void Destory();
 
-private:
+protected:
 	bool mIsEnable = true;
 	
 

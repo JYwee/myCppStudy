@@ -29,9 +29,15 @@ public:
 		return tmp2D;
 	}
 
-	bool operator==(const Pos2D& right) const
+	bool operator ==(const Pos2D& right) const
 	{
 		return ((pos_X == right.pos_X) && (pos_Y == right.pos_Y));
+	}
+
+
+	bool operator!=(const Pos2D& right) const
+	{
+		return (pos_X != right.pos_X) || (pos_Y != right.pos_Y);
 	}
 
 	void operator++()
