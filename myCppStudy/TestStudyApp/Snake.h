@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include <list>
+#include <vector>
 
 class Snake :
     public Object
@@ -9,7 +10,10 @@ public:
     Snake();
     ~Snake();
 
+
     std::list<Pos2D> mSnakeBody;
+    std::vector<Pos2D> mSnakeBody_Vec;
+
 
     bool IsAddBody = false;
 
