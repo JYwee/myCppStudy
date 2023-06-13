@@ -13,6 +13,10 @@ GameManager::~GameManager()
 		delete mSnake;
 		mSnake = nullptr;
 	}
+	if (mItem != nullptr) {
+		delete mItem;
+		mItem = nullptr;
+	}
 	//this->DestoryInstance();
 }
 

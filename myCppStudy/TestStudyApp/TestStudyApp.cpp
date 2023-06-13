@@ -23,6 +23,8 @@ int main()
     while (GameManager::GetInstance()->GetGameState())
     {
         GameManager::GetInstance()->Run();
+
+
         if (0 != _kbhit())
         {
             
