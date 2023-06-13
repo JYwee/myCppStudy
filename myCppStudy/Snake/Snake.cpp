@@ -21,7 +21,7 @@ int main()
 	createManager::GetInstance()->mHead = ConsoleEngineCore::CreateObject<Head>();
 
 	createManager::GetInstance()->mBody = ConsoleEngineCore::CreateObject<Body>();
-	createManager::GetInstance()->mBody->SetPos({ 0,1 });
+	createManager::GetInstance()->mBody->SetPos({ -1,-1 });
 	createManager::GetInstance()->mBody->SetChar('A');
 	std::list<ConsoleObject*> Objects = ConsoleEngineCore::GetObjects();
 
